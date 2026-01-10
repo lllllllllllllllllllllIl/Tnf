@@ -1,0 +1,74 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+-- Check if Rayfield is loaded correctly
+if not Rayfield then
+    warn("Failed to load Rayfield library")
+    return
+end
+
+local Window = Rayfield:CreateWindow({
+    Name = "Vision Hub",
+    LoadingTitle = "Vision Script",
+    LoadingSubtitle = "by Vision",
+    ConfigurationSaving = {
+       Enabled = false,
+       FileName = "Vision Script Hub"
+    },
+    Discord = {
+       Enabled = true,
+       Invite = "GYH92be25Z",
+       RememberJoins = true
+    },
+    KeySystem = true,
+    KeySettings = {
+       Title = "Vision Script Hub| Key",
+       Subtitle = "Link In Discord Server",
+       Note = "Join Server From Misc Tab",
+       FileName = "BladeBallKey",
+       SaveKey = false,
+       GrabKeyFromSite = true,
+       Key = {"https://pastebin.com/raw/QZYyHa0H"}
+    }
+})
+
+if not Window then
+    warn("Failed to create window. Please check the Rayfield library or script parameters.")
+    return
+end
+
+local OffenseTab = Window:CreateTab("Offense", nil) -- Title, Image
+local MainSection = OffenseTab:CreateSection("Main") -- Changed 'Tab' to 'MainTab'
+
+local Toggle = OffenseTab:CreateToggle({
+    Name = "Auto Perfect",
+    CurrentValue = false,
+    Flag = "AT_Toggle",
+    Callback = function(Value)
+        if Value then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/kosta5630/Arcade-basketball-public/refs/heads/main/Auto%20perfect"))()
+          end
+    end,
+})
+
+local Toggle = OffenseTab:CreateToggle({
+    Name = "Instant Shoot",
+    CurrentValue = false,
+    Flag = "AT_Toggle",
+    Callback = function(Value)
+        if Value then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/kosta5630/Arcade-basketball-public/refs/heads/main/Instant%20Shoot"))()
+        end
+    end,
+})
+
+local Toggle = OffenseTab:CreateToggle({
+    Name = "Auto Score (T)",
+    CurrentValue = false,
+    Flag = "AT_Toggle",
+    Callback = function(Value)
+        if Value then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/kosta5630/Arcade-basketball-public/refs/heads/main/Auto%20score"))()
+        end
+    end,
+})
+
