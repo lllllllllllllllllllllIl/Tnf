@@ -36,11 +36,11 @@ if not Window then
     return
 end
 
-local OffenseTab = Window:CreateTab("Offense", nil) -- Title, Image
-local MainSection = OffenseTab:CreateSection("Main") -- Changed 'Tab' to 'MainTab'
+local TrackTab = Window:CreateTab("Track", nil) -- Title, Image
+local MainSection = TrackTab:CreateSection("Main") -- Changed 'Tab' to 'MainTab'
 
-local Toggle = OffenseTab:CreateToggle({
-    Name = "Auto Perfect",
+local Toggle = TrackTab:CreateToggle({
+    Name = "Speed",
     CurrentValue = false,
     Flag = "AT_Toggle",
     Callback = function(Value)
@@ -50,24 +50,13 @@ local Toggle = OffenseTab:CreateToggle({
     end,
 })
 
-local Toggle = OffenseTab:CreateToggle({
-    Name = "Instant Shoot",
+local Toggle = TrackTab:CreateToggle({
+    Name = "Jump Power",
     CurrentValue = false,
     Flag = "AT_Toggle",
     Callback = function(Value)
         if Value then
             loadstring(game:HttpGet("https://raw.githubusercontent.com/kosta5630/Arcade-basketball-public/refs/heads/main/Instant%20Shoot"))()
-        end
-    end,
-})
-
-local Toggle = OffenseTab:CreateToggle({
-    Name = "Auto Score (T)",
-    CurrentValue = false,
-    Flag = "AT_Toggle",
-    Callback = function(Value)
-        if Value then
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/kosta5630/Arcade-basketball-public/refs/heads/main/Auto%20score"))()
         end
     end,
 })
