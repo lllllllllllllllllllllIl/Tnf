@@ -22,13 +22,13 @@ local Window = Rayfield:CreateWindow({
     KeySettings = {
        Title = "Vision Script Hub| Key",
        Subtitle = "Link In Discord Server",
-       Note = "Join Server From Misc Tab",
+       Note = "Key: https://discord.gg/Qff9uteV5H",
        FileName = "BladeBallKey",
        SaveKey = false,
        GrabKeyFromSite = true,
        Key = {"https://pastebin.com/raw/QZYyHa0H"}
     }
-})
+
 
 if not Window then
     warn("Failed to create window.")
