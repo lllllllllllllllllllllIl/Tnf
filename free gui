@@ -22,13 +22,13 @@ local Window = Rayfield:CreateWindow({
     KeySettings = {
        Title = "Vision Script Hub| Key",
        Subtitle = "Link In Discord Server",
-       Note = "Key: https://discord.gg/Qff9uteV5H",
+       Note = "Join Server From Misc Tab",
        FileName = "BladeBallKey",
        SaveKey = false,
        GrabKeyFromSite = true,
        Key = {"https://pastebin.com/raw/QZYyHa0H"}
     }
-
+})
 
 if not Window then
     warn("Failed to create window.")
@@ -118,7 +118,7 @@ player.CharacterAdded:Connect(function()
 end)
 
 TrackTab:CreateToggle({
-    Name = "Jump Power",
+    Name = "Jump Power(dontuse)",
     CurrentValue = false,
     Flag = "JumpToggle",
     Callback = function(Value)
