@@ -204,9 +204,9 @@ player.CharacterAdded:Connect(function(char)
 end)
 
 -- SETTINGS
-local boostStrength = 4
+local boostStrength = 2
 local boostDuration = 0.15
-local boostCooldown = 2
+local boostCooldown = 4
 
 local boosting = false
 local lastBoost = 0
