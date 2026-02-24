@@ -171,3 +171,64 @@ TrackTab:CreateToggle({
         end
     end,
 })
+
+--// UI TOGGLE (Put in PhysicsTab)
+
+local burstBoostEnabled = false
+
+local burstBoostToggle = TrackTab:CreateToggle({
+    Name = "Auto Speed Boost",
+    CurrentValue = false,
+    Flag = "Burst_Boost_Toggle",
+    Callback = function(v)
+        burstBoostEnabled = v
+    end,
+})
+
+--// SCRIPT
+
+repeat task.wait() until game:IsLoaded()
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local hrp = character:WaitForChild("HumanoidRootPart")
+
+player.CharacterAdded:Connect(function(char)
+    character = char
+    humanoid = char:WaitForChild("Humanoid")
+    hrp = char:WaitForChild("HumanoidRootPart")
+end)
+
+-- SETTINGS
+local boostStrength = 4
+local boostDuration = 0.15
+local boostCooldown = 2
+
+local boosting = false
+local lastBoost = 0
+
+RunService.Heartbeat:Connect(function()
+    if not burstBoostEnabled then return end
+    if not humanoid or not hrp then return end
+
+    local moveDir = humanoid.MoveDirection
+    if moveDir.Magnitude == 0 then return end
+
+    if tick() - lastBoost >= boostCooldown and not boosting then
+        boosting = true
+        lastBoost = tick()
+
+        task.spawn(function()
+            local startTime = tick()
+            while tick() - startTime < boostDuration and burstBoostEnabled do
+                hrp.CFrame = hrp.CFrame + (moveDir * boostStrength)
+                RunService.Heartbeat:Wait()
+            end
+            boosting = false
+        end)
+    end
+end)
